@@ -6,22 +6,26 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 
-import com.idescout.sql.SqlScoutServer;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
+
+import sqlite.android.vogella.de.first.Message.Messages;
+import sqlite.android.vogella.de.first.Message.MessagesDataSource;
+import sqlite.android.vogella.de.first.RGroup.RepetitiveGroupDataSource;
 
 public class TestDatabaseActivity extends ListActivity {
 
+    //Connection to messages database
     private MessagesDataSource datasource;
+    //Connection to repetitivegroup database
     private RepetitiveGroupDataSource repetitiveGroupDataSource;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_database);
-        SqlScoutServer.create(this, getPackageName());
 
         datasource = new MessagesDataSource(this);
         datasource.open();
@@ -76,10 +80,39 @@ public class TestDatabaseActivity extends ListActivity {
                     }
                 }
                 break;
+            case R.id.search:
+                editText.setText(getrespond(editText.getText().toString()));
+                break;
         }
         adapter.notifyDataSetChanged();
     }
 
+    private String getrespond(String sentence) {
+        if(sentence.equals(""))return "No Repetitive Response";
+        HashMap<String, ArrayList<String>> related_g = repetitiveGroupDataSource.getAllComments();
+        String result = "";
+        for(String str:related_g.keySet()) {
+            if (compare(sentence, str)>=0.76)
+                for(String s:related_g.get(str)){
+                    result = result + s + ";";
+                }
+        }
+        if(result.equals("")) return "No Repetitive Response";
+        else return result;
+    }
+
+    private double compare(String a, String b){
+        Comparier_se comparier_se = new Comparier_se();
+        Double db = 0.0;
+        try {
+            db = comparier_se.execute(a,b).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+        return db;
+    }
     public List<String> getMesses(List<Messages> messages){
         List<String> messes = new ArrayList<>();
         for(Messages me:messages){

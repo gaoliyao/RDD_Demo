@@ -6,6 +6,9 @@ package sqlite.android.vogella.de.first;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
+import sqlite.android.vogella.de.first.Message.Messages;
+import sqlite.android.vogella.de.first.RGroup.RepetitiveGroup;
+
 
 /**
  * Created by marsgao on 12/5/16.

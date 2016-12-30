@@ -1,4 +1,4 @@
-package sqlite.android.vogella.de.first;
+package sqlite.android.vogella.de.first.Message;
 
 /**
  * Created by marsgao on 12/27/16.

@@ -1,4 +1,4 @@
-package sqlite.android.vogella.de.first;
+package sqlite.android.vogella.de.first.RGroup;
 
 import android.content.ContentValues;
 import android.content.Context;

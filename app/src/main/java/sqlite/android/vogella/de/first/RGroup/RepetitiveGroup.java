@@ -1,7 +1,9 @@
-package sqlite.android.vogella.de.first;
+package sqlite.android.vogella.de.first.RGroup;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import sqlite.android.vogella.de.first.Message.Messages;
 
 /**
  * Created by marsgao on 12/27/16.

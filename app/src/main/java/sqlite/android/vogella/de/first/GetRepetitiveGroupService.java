@@ -3,6 +3,11 @@ package sqlite.android.vogella.de.first;
 import java.util.ArrayList;
 import java.util.Hashtable;
 
+import sqlite.android.vogella.de.first.Message.Messages;
+import sqlite.android.vogella.de.first.Message.MessagesDataSource;
+import sqlite.android.vogella.de.first.RGroup.RepetitiveGroup;
+import sqlite.android.vogella.de.first.RGroup.RepetitiveGroupDataSource;
+
 
 /**
  * Created by marsgao on 12/27/16.
