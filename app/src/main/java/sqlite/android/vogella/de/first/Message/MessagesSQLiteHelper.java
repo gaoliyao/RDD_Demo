@@ -10,6 +10,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class MessagesSQLiteHelper extends SQLiteOpenHelper {
 
+    /*******************************************************************/
+
+
     //The table name and column name of table messages
     //
     //   _id    _io    _mess

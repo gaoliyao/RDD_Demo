@@ -15,10 +15,13 @@ import java.util.HashMap;
 
 public class RepetitiveGroupDataSource {
 
+    /**************************   VAR   **************************************/
     private SQLiteDatabase database;
     private RepetitiveGroupSQLiteHelper dhelper;
     private String[] allColumns = {RepetitiveGroupSQLiteHelper.COLUMN_ID,RepetitiveGroupSQLiteHelper.COLUMN_INGROUP,
             RepetitiveGroupSQLiteHelper.COLUMN_RESPOND,RepetitiveGroupSQLiteHelper.COLUMN_RELEVENCE};
+    /*******************************************************************/
+
 
     public RepetitiveGroupDataSource(Context context){dhelper = new RepetitiveGroupSQLiteHelper(context);}
 
@@ -28,6 +31,8 @@ public class RepetitiveGroupDataSource {
 
     public void close(){dhelper.close();}
 
+
+    /**************************   INSERT   **************************************/
     public boolean createComment(int id , String incoming, String outgoing, double relevence) {
         ContentValues values = new ContentValues();
         values.put(RepetitiveGroupSQLiteHelper.COLUMN_ID, id);
@@ -40,21 +45,29 @@ public class RepetitiveGroupDataSource {
 
         return true;
     }
+    /*******************************************************************/
 
+    /**************************   DELETE   **************************************/
     public void deleteincoming(RepetitiveGroup repetitiveGroup) {
         String incoming = repetitiveGroup.getMess().get(0);
         System.out.println("Message deleted with ingroup: " + incoming);
         database.delete(RepetitiveGroupSQLiteHelper.TABLE_REPETITIVEGROUP, RepetitiveGroupSQLiteHelper.COLUMN_INGROUP
                 + " = " + incoming, null);
     }
+    /*******************************************************************/
 
+    /*************************   DELETE   ***************************************/
     public void deleteoutgoing(RepetitiveGroup repetitiveGroup) {
         String outgoing = repetitiveGroup.getMess().get(0);
         System.out.println("Message deleted with respond: " + outgoing);
         database.delete(RepetitiveGroupSQLiteHelper.TABLE_REPETITIVEGROUP, RepetitiveGroupSQLiteHelper.COLUMN_RESPOND
                 + " = " + outgoing, null);
     }
+    /*******************************************************************/
 
+    /************************   QUERY   ****************************************/
+    //Method of get all the elements in the database
+    //RepetitiveGroup
     public HashMap<String, ArrayList<String>> getAllComments() {
         HashMap<String, ArrayList<String>> related_group = new HashMap<String, ArrayList<String>>();
 
@@ -86,6 +99,7 @@ public class RepetitiveGroupDataSource {
         cursor.close();
         return related_group;
     }
+    /*******************************************************************/
 
 
 }

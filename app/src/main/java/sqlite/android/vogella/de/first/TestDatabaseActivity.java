@@ -14,6 +14,9 @@ import java.util.concurrent.ExecutionException;
 import sqlite.android.vogella.de.first.Message.Messages;
 import sqlite.android.vogella.de.first.Message.MessagesDataSource;
 import sqlite.android.vogella.de.first.RGroup.RepetitiveGroupDataSource;
+/**
+ * Created by marsgao on 12/27/16.
+ */
 
 public class TestDatabaseActivity extends ListActivity {
 

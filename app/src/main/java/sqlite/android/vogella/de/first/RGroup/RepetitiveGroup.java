@@ -9,6 +9,32 @@ import sqlite.android.vogella.de.first.Message.Messages;
  * Created by marsgao on 12/27/16.
  */
 
+//The Data Structure of RepetitveGroup
+
+/*
+    TYPE          in
+    The io of RepetitveGroup
+*/
+
+/*
+    MESS          ArrayList<String>
+    The messages in RepetitveGroup
+*/
+
+/*
+    MESS_INDEX    ArrayList<Integer>
+    The index of messages in RepetitveGroup
+*/
+
+
+/*
+    RELATED_GROUP HashMap<RepetitiveGroup, Double>
+    The related Groups
+    <RelatedGroup, Relevence>
+ */
+
+/*******************************************************************/
+
 public class RepetitiveGroup {
 
     private ArrayList<String> mess = new ArrayList<>();
